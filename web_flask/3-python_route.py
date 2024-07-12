@@ -1,50 +1,46 @@
 #!/usr/bin/python3
-"""Starts a Flask web application.
 
-The application listens on 0.0.0.0, port 5000.
-Routes:
-    /: Displays 'Hello HBNB!'.
-    /hbnb: Displays 'HBNB'.
-    /c/<text>: Displays 'C' followed by the value of <text>.
-    /python/(<text>): Displays 'Python' followed by the value of <text>.
 """
+starts a Flask web application
+"""
+
 from flask import Flask
 
 app = Flask(__name__)
 
 
 @app.route("/", strict_slashes=False)
-def hello_hbnb():
-    """Displays 'Hello HBNB!'."""
+def hello():
+    """
+    displays Hello HBNB!
+    """
     return "Hello HBNB!"
 
 
 @app.route("/hbnb", strict_slashes=False)
-def hbnb():
-    """Displays 'HBNB'."""
+def HBNB():
+    """
+    displays HBNB
+    """
     return "HBNB"
 
 
 @app.route("/c/<text>", strict_slashes=False)
-def c(text):
-    """Displays 'C' followed by the value of <text>.
-
-    Replaces any underscores in <text> with slashes.
+def cisfun(text):
     """
-    text = text.replace("_", " ")
-    return "C {}".format(text)
+    display “C ” followed by the value of the text variable
+    """
+    return "C " + text.replace("_", " ")
 
 
 @app.route("/python", strict_slashes=False)
 @app.route("/python/<text>", strict_slashes=False)
-def python(text="is cool"):
-    """Displays 'Python' followed by the value of <text>.
-
-    Replaces any underscores in <text> with slashes.
+def pythoniscool(text="is cool"):
     """
-    text = text.replace("_", " ")
-    return "Python {}".format(text)
+    display “Python ”, followed by the value of the text variable
+    """
+    return "Python " + text.replace("_", " ")
 
 
 if __name__ == "__main__":
-    app.run(host="0.0.0.0")
+    app.run(host="0.0.0.0", port=5000)
